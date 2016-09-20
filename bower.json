@@ -1,0 +1,17 @@
+{
+  "name": "lazy-load",
+  "description": "",
+  "main": "index.js",
+  "authors": [
+    "Jonathan Rubin Yaniv"
+  ],
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
