@@ -2,9 +2,10 @@ define(function (require) {
   var angular = require('angular');
   var loader = require('loader');
   require('ui-router');
+  require('oclazyload');
 
-  var app = angular.module('main', ['ui.router'])
-    .config(function ($stateProvider, $urlRouterProvider) {
+  var app = angular.module('main', ['ui.router', 'oc.lazyLoad'])
+    .config(function ($stateProvider, $urlRouterProvider, $ocLazyLoadProvider) {
       console.log("main config");
 
       $stateProvider.state('main', {
@@ -14,6 +15,14 @@ define(function (require) {
       });
 
       $urlRouterProvider.otherwise('main');
+
+      $ocLazyLoadProvider.config({
+        jsLoader: requirejs,
+        debug: true
+      });
+    })
+    .run(function ($ocLazyLoad) {
+      loader.init($ocLazyLoad);
     });
 
   app.controller('mainCtrl', function ($scope, $state) {
@@ -22,10 +31,8 @@ define(function (require) {
     $scope.lazyLoad = function () {
       var moduleName = 'lazy';
 
-      loader.load(moduleName, document.getElementById('module'))
+      loader.load(moduleName)
         .then(function (module) {
-          console.log(moduleName + " was loaded");
-
           $state.go(module.state);
         });
     };

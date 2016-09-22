@@ -1,30 +1,26 @@
 define(function (require) {
-  var angular = require('angular');
   var q = require('q');
 
-  function bootstrap(element, moduleName) {
-    angular.bootstrap(element, [moduleName]);
+  var _ocLazyLoader;
+
+  function init(ocLazyLoader) {
+    _ocLazyLoader = ocLazyLoader;
   }
 
-  /**
-   * First require the module's files, then angular-bootstrap it.
-   *
-   * @param moduleFileName file name
-   * @param element the HTML element that the module will be bootstrap'ed to.
-   * @returns {Q.Promise} returns a promise for the actual action.
-   */
-  function load(moduleFileName, element) {
+  function load(moduleName) {
     var defer = q.defer();
 
-    require([moduleFileName], function (module) {
-      bootstrap(element, module.name);
-      defer.resolve(module);
-    });
+    _ocLazyLoader.load(moduleName)
+      .then(function () {
+        var moduleProps = require(moduleName); // required already, constant time
+        defer.resolve(moduleProps);
+      });
 
     return defer.promise;
   }
 
   return {
+    init: init,
     load: load
   }
 });
