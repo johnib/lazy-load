@@ -1,9 +1,9 @@
 define(function (require) {
   var q = require('q');
-
   var _ocLazyLoader;
 
   function init(ocLazyLoader) {
+    console.log("loader init");
     _ocLazyLoader = ocLazyLoader;
   }
 

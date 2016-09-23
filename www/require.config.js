@@ -2,6 +2,7 @@ require.config({
   baseUrl: './',
   paths: {
     /* modules */
+    'main': 'modules/main/main',
     'lazy': 'modules/lazy/lazy',
 
     /* utils */
