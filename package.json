@@ -1,21 +1,21 @@
 {
-  "name": "lazy-load",
+  "name": "angular-lazy-load-requirejs-oclazyload",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "A POC for loading Angular modules lazily using RequireJS and ocLazyLoad",
+  "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server"
+    "start": "node server",
+    "postinstall": "node_modules/.bin/bower install"
   },
   "author": "Jonathan Rubin Yaniv",
   "license": "MIT",
   "dependencies": {
-    "body-parser": "^1.15.2",
     "express": "^4.14.0",
     "morgan": "^1.7.0",
     "pretty-logger": "^0.1.2"
   },
   "devDependencies": {
+    "bower": "^1.7.9",
     "grunt": "^1.0.1",
     "grunt-cli": "^1.2.0",
     "grunt-contrib-clean": "^1.0.0",
