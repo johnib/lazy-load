@@ -4,22 +4,18 @@
   "description": "A POC for loading Angular modules lazily using RequireJS and ocLazyLoad",
   "main": "server.js",
   "scripts": {
-    "start": "node server",
+    "start": "node_modules/.bin/http-server www",
     "postinstall": "node_modules/.bin/bower install"
   },
   "author": "Jonathan Rubin Yaniv",
   "license": "MIT",
-  "dependencies": {
-    "express": "^4.14.0",
-    "morgan": "^1.7.0",
-    "pretty-logger": "^0.1.2"
-  },
   "devDependencies": {
     "bower": "^1.7.9",
     "grunt": "^1.0.1",
     "grunt-cli": "^1.2.0",
     "grunt-contrib-clean": "^1.0.0",
     "grunt-contrib-copy": "^1.0.0",
-    "grunt-contrib-requirejs": "^1.0.0"
+    "grunt-contrib-requirejs": "^1.0.0",
+    "http-server": "^0.9.0"
   }
 }
