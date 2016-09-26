@@ -8,6 +8,7 @@ define(function (require) {
     .config(function ($stateProvider, $urlRouterProvider, $ocLazyLoadProvider) {
       console.log("main config");
 
+      /* states definition */
       $stateProvider.state('main', {
         url: '/main',
         template: require('text!modules/main/views/main.html'),
@@ -16,6 +17,7 @@ define(function (require) {
 
       $urlRouterProvider.otherwise('main');
 
+      /* lazy load definition */
       $ocLazyLoadProvider.config({
         jsLoader: requirejs,
         debug: true
